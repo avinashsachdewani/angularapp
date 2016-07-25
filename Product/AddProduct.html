@@ -1,0 +1,18 @@
+<div>
+    <form ng-submit="submit(product)">
+        <div class="form-group">
+            <label for="productName">Name</label>
+            <input type="text" ng-model="product.Name" class="form-control" id="txtName" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="productCost">Cost</label>
+            <input type="number" ng-model="product.Cost" class="form-control" id="txtCost" placeholder="Cost">
+        </div>
+        <div class="form-group">
+            <label for="productRating">Rating</label>
+            <input type="number" ng-model="product.Rating" max="5" min="1" class="form-control" id="txtRating" placeholder="Rating">
+        </div>
+        <button type="submit"  class="btn btn-success">Submit</button>
+        <button type="button" ng-click="Back()" class="btn btn-info">Cancel</button>
+    </form>
+</div>

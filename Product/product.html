@@ -1,0 +1,71 @@
+<div>
+    <a class="btn btn-success" href="#add" role="button">Add</a>
+    <label>Search: <input ng-model="searchText"/></label>
+    <!--<i ng-mouseover="count = count + 1" ng-init="count=0" class="glyphicon glyphicon-star"></i>-->
+    <!--{{count}}-->
+</div>
+<br/><br/>
+
+<!--<div class="alert alert-info">-->
+    <!--<p>Sort Type: {{ sortType }}</p>-->
+    <!--<p>-->
+        <!--<a href="#" ng-click="sortReverse = !sortReverse">Check</a>-->
+        <!--Sort Reverse: {{ sortReverse }}</p>-->
+<!--</div>-->
+<!--<prdouct-Directive title="Hello"></prdouct-Directive>-->
+<br/>
+<br/>
+<table class="table table-bordered ">
+    <thead>
+    <th >#</th>
+    <th >
+        <a href="javascript:" ng-click="sortType == 'Name' ; sortReverse=!sortReverse">
+            Name
+            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+        </a>
+    </th>
+    <th>
+        <a href="javascript:" ng-click="sortType == 'Cost' ; sortReverse=!sortReverse">
+            Cost
+            <span ng-show="sortType == 'Cost' && !sortReverse" class="fa fa-caret-down"></span>
+        </a></th>
+    <th>Rating</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="product in Products | orderBy:sortType:sortReverse | filter:searchText">
+        <td><a href="#detail/{{product.id}}">{{product.id}}</a>
+        </td>
+        <td>
+
+            <input ng-if="product.IsEditable" type="text" placeholder="Name" ng-model="product.Name"/>
+            <span ng-if="product.IsEditable==false">{{product.Name}}</span>
+        </td>
+        <td>
+            <input ng-if="product.IsEditable" type="text" ng-model="product.Cost"/>
+            <span ng-if="product.IsEditable==false">{{product.Cost}}</span>
+        </td>
+        <td>
+                    <a ng-repeat="i in getNumber(product.TotalRating) track by $index" ng-click="saveRating(product.id,$index+1)"
+                       ng-class="$index+1<=product.Rating ? 'rating' : 'default-rating'"  >
+                        <i ng-mouseover="count = count + 1" ng-init="count=0" class="fa fa-star"></i>
+                    </a>
+            <span>{{product.Rating}} OUT OF 5 </span>
+        </td>
+        <td>
+            <!--<a href="#edit/{{product.id}}">Edit</a>-->
+            <a href="javascript:" ng-click="editRow(product.id)" ng-if="product.IsEditable==false">Edit</a>
+            <a href="javascript:" ng-click="editRow(product.id)" ng-if="product.IsEditable">Cancel</a>
+        </td>
+
+        <td><a href="javascript:;" ng-click="deleteRow($index)">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<div class="row">
+    <button type="button" ng-click="addRow()" class="btn btn-success">Add</button>
+    <button type="button" ng-click="saveProducts(Products)" class="btn btn-info">Submit</button>
+</div>
+

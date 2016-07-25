@@ -1,0 +1,18 @@
+<table class="table table-bordered ">
+    <thead>
+    <tr ng-repeat="item in Products | limitTo:1">
+        <th ng-repeat="(key, val) in item">
+            <a href="javascript:" ng-click="sortType == '{{key}}' ; sortReverse=!sortReverse">
+            {{key}}
+            </a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in Products">
+        <td ng-repeat="(key, val) in item">
+            {{val}}
+        </td>
+    </tr>
+    </tbody>
+</table>
