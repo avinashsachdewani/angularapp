@@ -57,7 +57,7 @@
         <td>
             <!--<a href="#edit/{{product.id}}">Edit</a>-->
             <a href="javascript:" ng-click="editRow(product.id)" ng-if="product.IsEditable==false">Edit</a>
-            <a href="javascript:" ng-click="editRow(product.id)" ng-if="product.IsEditable">Save</a>
+            <a href="javascript:" ng-click="submit(product)" ng-if="product.IsEditable">Save</a>
             <a href="javascript:" ng-click="editRow(product.id)" ng-if="product.IsEditable">Cancel</a>
         </td>
 

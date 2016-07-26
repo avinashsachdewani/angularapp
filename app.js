@@ -86,12 +86,14 @@ angular.module('myApp',
                 //if this is new contact, add it in contacts array
                 product.id = uid++;
                 product.TotalRating = 5;
+                product.IsEditable = false;
                 products.push(product);
             } else {
                 //for existing contact, find this contact using id
                 //and update it.
                 for (var i in products) {
                     if (products[i].id == product.id) {
+                        products[i].IsEditable = false;
                         products[i] = product;
                         return;
                     }
