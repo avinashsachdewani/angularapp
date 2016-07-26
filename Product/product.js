@@ -55,7 +55,7 @@ angular.module('product',[]).
         $scope.addRow = function(){
             var products = $scope.Products;
                 $scope.Products.push({
-                    "id": products[products.length-1].id + 1,
+                    "id": null,
                     "Name": "",
                     "Cost": 0,
                     "TotalRating": 5,
